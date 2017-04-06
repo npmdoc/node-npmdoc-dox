@@ -1,0 +1,1297 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/tj/dox"
+
+    >dox (v0.9.0)</a>
+</h1>
+<h4>Markdown / JSdoc documentation generator</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dox">module dox</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.api">
+            function <span class="apidocSignatureSpan">dox.</span>api
+            <span class="apidocSignatureSpan">(comments)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.extractTagParts">
+            function <span class="apidocSignatureSpan">dox.</span>extractTagParts
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.parseCodeContext">
+            function <span class="apidocSignatureSpan">dox.</span>parseCodeContext
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.parseComment">
+            function <span class="apidocSignatureSpan">dox.</span>parseComment
+            <span class="apidocSignatureSpan">(str, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.parseComments">
+            function <span class="apidocSignatureSpan">dox.</span>parseComments
+            <span class="apidocSignatureSpan">(js, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.parseParamOptional">
+            function <span class="apidocSignatureSpan">dox.</span>parseParamOptional
+            <span class="apidocSignatureSpan">(tag)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.parseTag">
+            function <span class="apidocSignatureSpan">dox.</span>parseTag
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.parseTagTypes">
+            function <span class="apidocSignatureSpan">dox.</span>parseTagTypes
+            <span class="apidocSignatureSpan">(str, tag)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.trimIndentation">
+            function <span class="apidocSignatureSpan">dox.</span>trimIndentation
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dox.</span>contextPatternMatchers</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dox.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dox.contextPatternMatchers">module dox.contextPatternMatchers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.0">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>0
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.1">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>1
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.10">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>10
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.11">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>11
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.12">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>12
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.13">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>13
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.14">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>14
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.15">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>15
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.16">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>16
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.2">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>2
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.3">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>3
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.4">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>4
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.5">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>5
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.6">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>6
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.7">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>7
+            <span class="apidocSignatureSpan">(str, parentContext)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.8">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>8
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.contextPatternMatchers.9">
+            function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>9
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dox.utils">module dox.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dox.utils.escape">
+            function <span class="apidocSignatureSpan">dox.utils.</span>escape
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dox" id="apidoc.module.dox">module dox</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dox.api" id="apidoc.element.dox.api">
+        function <span class="apidocSignatureSpan">dox.</span>api
+        <span class="apidocSignatureSpan">(comments)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">api = function (comments){
+  var buf = [];
+
+  comments.forEach(function(comment){
+    if (comment.isPrivate) return;
+    if (comment.ignore) return;
+    var ctx = comment.ctx;
+    var desc = comment.description;
+    if (!ctx) return;
+    if (~desc.full.indexOf(&#x27;Module dependencies&#x27;)) return;
+    if (!ctx.string.indexOf(&#x27;module.exports&#x27;)) return;
+    buf.push(&#x27;### &#x27; + context(comment));
+    buf.push(&#x27;&#x27;);
+    buf.push(desc.full.trim().replace(/^/gm, &#x27;  &#x27;));
+    buf.push(&#x27;&#x27;);
+  });
+
+  buf = buf
+    .join(&#x27;\n&#x27;)
+    .replace(/^ *#/gm, &#x27;&#x27;)
+
+  var code = buf.match(/^( {4}[^\n]+\n*)+/gm) || [];
+
+  code.forEach(function(block){
+    var code = block.replace(/^ {4}/gm, &#x27;&#x27;);
+    buf = buf.replace(block, &#x27;```js\n&#x27; + code.trimRight() + &#x27;\n```\n\n&#x27;);
+  });
+
+  return toc(buf) + &#x27;\n\n&#x27; + buf;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.extractTagParts" id="apidoc.element.dox.extractTagParts">
+        function <span class="apidocSignatureSpan">dox.</span>extractTagParts
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">extractTagParts = function (str) {
+  var level = 0,
+    extract = &#x27;&#x27;,
+    split = [];
+
+  str.split(&#x27;&#x27;).forEach(function(c) {
+    if(c.match(/\s/) &#x26;&#x26; level === 0) {
+      split.push(extract);
+      extract = &#x27;&#x27;;
+    } else {
+      if(c === &#x27;{&#x27;) {
+        level++;
+      } else if (c === &#x27;}&#x27;) {
+        level--;
+      }
+
+      extract += c;
+    }
+  });
+
+  split.push(extract);
+  return split.filter(function(str) {
+    return str.length &#x3e; 0;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.parseCodeContext" id="apidoc.element.dox.parseCodeContext">
+        function <span class="apidocSignatureSpan">dox.</span>parseCodeContext
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseCodeContext = function (str, parentContext) {
+  parentContext = parentContext || {};
+
+  var ctx;
+
+  // loop through all context matchers, returning the first successful match
+  return exports.contextPatternMatchers.some(function (matcher) {
+    return ctx = matcher(str, parentContext);
+  }) &#x26;&#x26; ctx;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.parseComment" id="apidoc.element.dox.parseComment">
+        function <span class="apidocSignatureSpan">dox.</span>parseComment
+        <span class="apidocSignatureSpan">(str, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseComment = function (str, options) {
+  str = str.trim();
+  options = options || {};
+
+  var comment = { tags: [] }
+    , raw = options.raw
+    , description = {}
+    , tags = str.split(/\n\s*@/);
+
+  // A comment has no description
+  if (tags[0].charAt(0) === &#x27;@&#x27;) {
+    tags.unshift(&#x27;&#x27;);
+  }
+
+  // parse comment body
+  description.full = tags[0];
+  description.summary = description.full.split(&#x27;\n\n&#x27;)[0];
+  description.body = description.full.split(&#x27;\n\n&#x27;).slice(1).join(&#x27;\n\n&#x27;);
+  comment.description = description;
+
+  // parse tags
+  if (tags.length) {
+    comment.tags = tags.slice(1).map(exports.parseTag);
+    comment.isPrivate = comment.tags.some(function(tag){
+      return &#x27;private&#x27; == tag.visibility;
+    });
+    comment.isConstructor = comment.tags.some(function(tag){
+      return &#x27;constructor&#x27; == tag.type || &#x27;augments&#x27; == tag.type;
+    });
+    comment.isClass = comment.tags.some(function(tag){
+      return &#x27;class&#x27; == tag.type;
+    });
+    comment.isEvent = comment.tags.some(function(tag){
+      return &#x27;event&#x27; == tag.type;
+    });
+
+    if (!description.full || !description.full.trim()) {
+      comment.tags.some(function(tag){
+        if (&#x27;description&#x27; == tag.type) {
+          description.full = tag.full;
+          description.summary = tag.summary;
+          description.body = tag.body;
+          return true;
+        }
+      });
+    }
+  }
+
+  // markdown
+  if (!raw) {
+    description.full = markdown.render(description.full).trim();
+    description.summary = markdown.render(description.summary).trim();
+    description.body = markdown.render(description.body).trim();
+    comment.tags.forEach(function (tag) {
+      if (tag.description) tag.description = markdown.render(tag.description).trim();
+      else tag.html = markdown.render(tag.string).trim();
+    });
+  }
+
+  return comment;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.parseComments" id="apidoc.element.dox.parseComments">
+        function <span class="apidocSignatureSpan">dox.</span>parseComments
+        <span class="apidocSignatureSpan">(js, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseComments = function (js, options){
+  options = options || {};
+  js = js.replace(/\r\n/gm, &#x27;\n&#x27;);
+
+  var comments = []
+    , skipSingleStar = options.skipSingleStar
+    , comment
+    , buf = &#x27;&#x27;
+    , ignore
+    , withinMultiline = false
+    , withinSingle = false
+    , withinString = false
+    , code
+    , linterPrefixes = options.skipPrefixes || [&#x27;jslint&#x27;, &#x27;jshint&#x27;, &#x27;eshint&#x27;]
+    , skipPattern = new RegExp(&#x27;^&#x27; + (options.raw ? &#x27;&#x27; : &#x27;&#x3c;p&#x3e;&#x27;) + &#x27;(&#x27;+ linterPrefixes.join(&#x27;|&#x27;) + &#x27;)&#x27;)
+    , lineNum = 1
+    , lineNumStarting = 1
+    , parentContext
+    , withinEscapeChar
+    , currentStringQuoteChar;
+
+
+  for (var i = 0, len = js.length; i &#x3c; len; ++i) {
+    withinEscapeChar = withinString &#x26;&#x26; !withinEscapeChar &#x26;&#x26; js[i - 1] == &#x27;\\&#x27;;
+
+    // start comment
+    if (!withinMultiline &#x26;&#x26; !withinSingle &#x26;&#x26; !withinString &#x26;&#x26;
+        &#x27;/&#x27; == js[i] &#x26;&#x26; &#x27;*&#x27; == js[i+1] &#x26;&#x26; (!skipSingleStar || js[i+2] == &#x27;*&#x27;)) {
+      lineNumStarting = lineNum;
+      // code following the last comment
+      if (buf.trim().length) {
+        comment = comments[comments.length - 1];
+        if(comment) {
+          // Adjust codeStart for any vertical space between comment and code
+          comment.codeStart += buf.match(/^(\s*)/)[0].split(&#x27;\n&#x27;).length - 1;
+          comment.code = code = exports.trimIndentation(buf).trim();
+          comment.ctx = exports.parseCodeContext(code, parentContext);
+
+          if (comment.isConstructor &#x26;&#x26; comment.ctx){
+              comment.ctx.type = &#x22;constructor&#x22;;
+          }
+
+          // starting a new namespace
+          if (comment.ctx &#x26;&#x26; (comment.ctx.type === &#x27;prototype&#x27; || comment.ctx.type === &#x27;class&#x27;)){
+            parentContext = comment.ctx;
+          }
+          // reasons to clear the namespace
+          // new property/method in a different constructor
+          else if (!parentContext || !comment.ctx || !comment.ctx.constructor || !parentContext.constructor || parentContext.constructor
+ !== comment.ctx.constructor){
+            parentContext = null;
+          }
+        }
+        buf = &#x27;&#x27;;
+      }
+      i += 2;
+      withinMultiline = true;
+      ignore = &#x27;!&#x27; == js[i];
+
+      // if the current character isn&#x27;t whitespace and isn&#x27;t an ignored comment,
+      // back up one character so we don&#x27;t clip the contents
+      if (&#x27; &#x27; !== js[i] &#x26;&#x26; &#x27;\n&#x27; !== js[i] &#x26;&#x26; &#x27;\t&#x27; !== js[i] &#x26;&#x26; &#x27;!&#x27; !== js[i]) i--;
+
+    // end comment
+    } else if (withinMultiline &#x26;&#x26; !withinSingle &#x26;&#x26; &#x27;*&#x27; == js[i] &#x26;&#x26; &#x27;/&#x27; == js[i+1]) {
+      i += 2;
+      buf = buf.replace(/^[ \t]*\* ?/gm, &#x27;&#x27;);
+      comment = exports.parseComment(buf, options);
+      comment.ignore = ignore;
+      comment.line = lineNumStarting;
+      comment.codeStart = lineNum + 1;
+      if (!comment.description.full.match(skipPattern)) {
+        comments.push(comment);
+      }
+      withinMultiline = ignore = false;
+      buf = &#x27;&#x27;;
+    } else if (!withinSingle &#x26;&#x26; !withinMultiline &#x26;&#x26; !withinString &#x26;&#x26; &#x27;/&#x27; == js[i] &#x26;&#x26; &#x27;/&#x27; == js[i+1]) {
+      withinSingle = true;
+      buf += js[i];
+    } else if (withinSingle &#x26;&#x26; !withinMultiline &#x26;&#x26; &#x27;\n&#x27; == js[i]) {
+      withinSingle = false;
+      buf += js[i];
+    } else if (!withinSingle &#x26;&#x26; !withinMultiline &#x26;&#x26; !withinEscapeChar &#x26;&#x26; (&#x27;\&#x27;&#x27; == js[i] || &#x27;&#x22;&#x27; == js[i] || &#x27;`&#x27; == js[i])) {
+      if(withinString) {
+        if(js[i] == currentStringQuoteChar) {
+          withinString = false;
+        }
+      } else {
+        withinString = true;
+        currentStringQuoteChar = js[i];
+      }
+
+      buf += js[i];
+    } else {
+      buf += js[i];
+    }
+
+    if(&#x27;\n&#x27; == js[i]) {
+      lineNum++;
+    }
+
+  }
+
+  if (comments.length === 0) {
+    comments.push({
+      tags: [],
+      description: {full: &#x27;&#x27;, summary: &#x27;&#x27;, body: &#x27;&#x27;},
+      isPrivate: false,
+      isConstructor: false,
+      line: lineNumStarting
+    });
+  }
+
+  // trailing code
+  if (buf.trim().length) {
+    comment = comments[comments.length - 1];
+    // Adjust codeStart for any vertical space between comment and code
+    comment.codeStart += buf.match(/^(\s*)/)[0].split(&#x27;\n&#x27;).length - 1;
+    comment.code = code = exports.trimIndentation(buf).trim();
+    comment.ctx = exports.parseCodeContext(code, parentContext);
+  }
+
+  return com ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Programmatic Usage
+
+``` javascript
+
+var dox = require(&#x27;dox&#x27;),
+    code = &#x22;...&#x22;;
+
+var obj = dox.<span class="apidocCodeKeywordSpan">parseComments</span>(code);
+
+// [{ tags:[ ... ], description, ... }, { ... }, ...]
+
+```
+
+## Properties
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.parseParamOptional" id="apidoc.element.dox.parseParamOptional">
+        function <span class="apidocSignatureSpan">dox.</span>parseParamOptional
+        <span class="apidocSignatureSpan">(tag)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseParamOptional = function (tag) {
+  var lastTypeChar = tag.types.slice(-1)[0].slice(-1);
+  return tag.name.slice(0,1) === &#x27;[&#x27; || lastTypeChar === &#x27;=&#x27; || lastTypeChar === &#x27;?&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.parseTag" id="apidoc.element.dox.parseTag">
+        function <span class="apidocSignatureSpan">dox.</span>parseTag
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseTag = function (str) {
+  var tag = {}
+    , lines = str.split(&#x27;\n&#x27;)
+    , parts = exports.extractTagParts(lines[0])
+    , type = tag.type = parts.shift().replace(&#x27;@&#x27;, &#x27;&#x27;)
+    , matchType = new RegExp(&#x27;^@?&#x27; + type + &#x27; *&#x27;)
+    , matchTypeStr = /^\{.+\}$/;
+
+  tag.string = str.replace(matchType, &#x27;&#x27;);
+
+  if (lines.length &#x3e; 1) {
+    parts.push(lines.slice(1).join(&#x27;\n&#x27;));
+  }
+
+  switch (type) {
+    case &#x27;property&#x27;:
+    case &#x27;template&#x27;:
+    case &#x27;param&#x27;:
+      var typeString = matchTypeStr.test(parts[0]) ? parts.shift() : &#x22;&#x22;;
+      tag.name = parts.shift() || &#x27;&#x27;;
+      tag.description = parts.join(&#x27; &#x27;);
+      exports.parseTagTypes(typeString, tag);
+      break;
+    case &#x27;define&#x27;:
+    case &#x27;return&#x27;:
+    case &#x27;returns&#x27;:
+      var typeString = matchTypeStr.test(parts[0]) ? parts.shift() : &#x22;&#x22;;
+      exports.parseTagTypes(typeString, tag);
+      tag.description = parts.join(&#x27; &#x27;);
+      break;
+    case &#x27;see&#x27;:
+      if (~str.indexOf(&#x27;http&#x27;)) {
+        tag.title = parts.length &#x3e; 1
+          ? parts.shift()
+          : &#x27;&#x27;;
+        tag.url = parts.join(&#x27; &#x27;);
+      } else {
+        tag.local = parts.join(&#x27; &#x27;);
+      }
+      break;
+    case &#x27;api&#x27;:
+      tag.visibility = parts.shift();
+      break;
+    case &#x27;public&#x27;:
+    case &#x27;private&#x27;:
+    case &#x27;protected&#x27;:
+      tag.visibility = type;
+      break;
+    case &#x27;enum&#x27;:
+    case &#x27;typedef&#x27;:
+    case &#x27;type&#x27;:
+      exports.parseTagTypes(parts.shift(), tag);
+      break;
+    case &#x27;lends&#x27;:
+    case &#x27;memberOf&#x27;:
+      tag.parent = parts.shift();
+      break;
+    case &#x27;extends&#x27;:
+    case &#x27;implements&#x27;:
+    case &#x27;augments&#x27;:
+      tag.otherClass = parts.shift();
+      break;
+    case &#x27;borrows&#x27;:
+      tag.otherMemberName = parts.join(&#x27; &#x27;).split(&#x27; as &#x27;)[0];
+      tag.thisMemberName = parts.join(&#x27; &#x27;).split(&#x27; as &#x27;)[1];
+      break;
+    case &#x27;throws&#x27;:
+      var typeString = matchTypeStr.test(parts[0]) ? parts.shift() : &#x22;&#x22;;
+      tag.types = exports.parseTagTypes(typeString);
+      tag.description = parts.join(&#x27; &#x27;);
+      break;
+    case &#x27;description&#x27;:
+      tag.full = parts.join(&#x27; &#x27;).trim();
+      tag.summary = tag.full.split(&#x27;\n\n&#x27;)[0];
+      tag.body = tag.full.split(&#x27;\n\n&#x27;).slice(1).join(&#x27;\n\n&#x27;);
+      break;
+    default:
+      tag.string = parts.join(&#x27; &#x27;).replace(/\s+$/, &#x27;&#x27;);
+      break;
+  }
+
+  return tag;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.parseTagTypes" id="apidoc.element.dox.parseTagTypes">
+        function <span class="apidocSignatureSpan">dox.</span>parseTagTypes
+        <span class="apidocSignatureSpan">(str, tag)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseTagTypes = function (str, tag) {
+  if (!str) {
+    if(tag) {
+      tag.types = [];
+      tag.typesDescription = &#x22;&#x22;;
+      tag.optional = tag.nullable = tag.nonNullable = tag.variable = false;
+    }
+    return [];
+  }
+  var Parser = require(&#x27;jsdoctypeparser&#x27;).Parser;
+  var Builder = require(&#x27;jsdoctypeparser&#x27;).Builder;
+  var result = new Parser().parse(str.substr(1, str.length - 2));
+
+  var types = (function transform(type) {
+    if(type instanceof Builder.TypeUnion) {
+      return type.types.map(transform);
+    } else if(type instanceof Builder.TypeName) {
+      return type.name;
+    } else if(type instanceof Builder.RecordType) {
+      return type.entries.reduce(function(obj, entry) {
+        obj[entry.name] = transform(entry.typeUnion);
+        return obj;
+      }, {});
+    } else {
+      return type.toString();
+    }
+  }(result));
+
+  if(tag) {
+    tag.types = types;
+    tag.typesDescription = result.toHtml();
+    tag.optional = (tag.name &#x26;&#x26; tag.name.slice(0,1) === &#x27;[&#x27;) || result.optional;
+    tag.nullable = result.nullable;
+    tag.nonNullable = result.nonNullable;
+    tag.variable = result.variable;
+  }
+
+  return types;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.trimIndentation" id="apidoc.element.dox.trimIndentation">
+        function <span class="apidocSignatureSpan">dox.</span>trimIndentation
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">trimIndentation = function (str) {
+  // Find indentation from first line of code.
+  var indent = str.match(/(?:^|\n)([ \t]*)[^\s]/);
+  if (indent) {
+    // Replace indentation on all lines.
+    str = str.replace(new RegExp(&#x27;(^|\n)&#x27; + indent[1], &#x27;g&#x27;), &#x27;$1&#x27;);
+  }
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dox.contextPatternMatchers" id="apidoc.module.dox.contextPatternMatchers">module dox.contextPatternMatchers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.0" id="apidoc.element.dox.contextPatternMatchers.0">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>0
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">0 = function (str) {
+  // class, possibly exported by name or as a default
+  if (/^\s*(export(\s+default)?\s+)?class\s+([\w$]+)(\s+extends\s+([\w$.]+(?:\(.*\))?))?\s*{/.exec(str)) {
+    return {
+        type: &#x27;class&#x27;
+      , constructor: RegExp.$3
+      , cons: RegExp.$3
+      , name: RegExp.$3
+      , extends: RegExp.$5
+      , string: &#x27;new &#x27; + RegExp.$3 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.1" id="apidoc.element.dox.contextPatternMatchers.1">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>1
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">1 = function (str, parentContext) {
+  // class constructor
+  if (/^\s*constructor\s*\(/.exec(str)) {
+    return {
+      type: &#x27;constructor&#x27;
+      , constructor: parentContext.name
+      , cons: parentContext.name
+      , name: &#x27;constructor&#x27;
+      , string: (parentContext &#x26;&#x26; parentContext.name &#x26;&#x26; parentContext.name + &#x27;.prototype.&#x27; || &#x27;&#x27;) + &#x27;constructor()&#x27;
+    };
+  // class method
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.10" id="apidoc.element.dox.contextPatternMatchers.10">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>10
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">10 = function (str) {
+  // inline prototype
+  if (/^\s*([\w$.]+)\s*\.\s*prototype\s*=\s*{/.exec(str)) {
+    return {
+      type: &#x27;prototype&#x27;
+      , constructor: RegExp.$1
+      , cons: RegExp.$1
+      , name: RegExp.$1
+      , string: RegExp.$1 + &#x27;.prototype&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.11" id="apidoc.element.dox.contextPatternMatchers.11">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>11
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">11 = function (str, parentContext) {
+  // inline method
+  if (/^\s*([\w$.]+)\s*:\s*function/.exec(str)) {
+    return {
+      type: &#x27;method&#x27;
+      , constructor: parentContext.name
+      , cons: parentContext.name
+      , name: RegExp.$1
+      , string: (parentContext &#x26;&#x26; parentContext.name &#x26;&#x26; parentContext.name + &#x27;.prototype.&#x27; || &#x27;&#x27;) + RegExp.$1 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.12" id="apidoc.element.dox.contextPatternMatchers.12">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>12
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">12 = function (str, parentContext) {
+  // inline property
+  if (/^\s*([\w$.]+)\s*:\s*([^\n;]+)/.exec(str)) {
+    return {
+      type: &#x27;property&#x27;
+      , constructor: parentContext.name
+      , cons: parentContext.name
+      , name: RegExp.$1
+      , value: RegExp.$2.trim()
+      , string: (parentContext &#x26;&#x26; parentContext.name &#x26;&#x26; parentContext.name + &#x27;.&#x27; || &#x27;&#x27;) + RegExp.$1
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.13" id="apidoc.element.dox.contextPatternMatchers.13">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>13
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">13 = function (str, parentContext) {
+  // inline getter/setter
+  if (/^\s*(get|set)\s*([\w$.]+)\s*\(/.exec(str)) {
+    return {
+      type: &#x27;property&#x27;
+      , constructor: parentContext.name
+      , cons: parentContext.name
+      , name: RegExp.$2
+      , string: (parentContext &#x26;&#x26; parentContext.name &#x26;&#x26; parentContext.name + &#x27;.prototype.&#x27; || &#x27;&#x27;) + RegExp.$2
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.14" id="apidoc.element.dox.contextPatternMatchers.14">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>14
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">14 = function (str) {
+  // method
+  if (/^\s*([\w$.]+)\s*\.\s*([\w$]+)\s*=\s*function/.exec(str)) {
+    return {
+        type: &#x27;method&#x27;
+      , receiver: RegExp.$1
+      , name: RegExp.$2
+      , string: RegExp.$1 + &#x27;.&#x27; + RegExp.$2 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.15" id="apidoc.element.dox.contextPatternMatchers.15">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>15
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">15 = function (str) {
+  // property
+  if (/^\s*([\w$.]+)\s*\.\s*([\w$]+)\s*=\s*([^\n;]+)/.exec(str)) {
+    return {
+        type: &#x27;property&#x27;
+      , receiver: RegExp.$1
+      , name: RegExp.$2
+      , value: RegExp.$3.trim()
+      , string: RegExp.$1 + &#x27;.&#x27; + RegExp.$2
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.16" id="apidoc.element.dox.contextPatternMatchers.16">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>16
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">16 = function (str) {
+  // declaration
+  if (/^\s*(?:const|let|var)\s+([\w$]+)\s*=\s*([^\n;]+)/.exec(str)) {
+    return {
+        type: &#x27;declaration&#x27;
+      , name: RegExp.$1
+      , value: RegExp.$2.trim()
+      , string: RegExp.$1
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.2" id="apidoc.element.dox.contextPatternMatchers.2">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>2
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">2 = function (str, parentContext) {
+  if (/^\s*(static)?\s*(\*)?\s*([\w$]+|\[.*\])\s*\(/.exec(str)) {
+    return {
+      type: &#x27;method&#x27;
+      , constructor: parentContext.name
+      , cons: parentContext.name
+      , name: RegExp.$2 + RegExp.$3
+      , string: (parentContext &#x26;&#x26; parentContext.name &#x26;&#x26; parentContext.name + (RegExp.$1 ? &#x27;.&#x27; : &#x27;.prototype.&#x27;) || &#x27;&#x27;) + RegExp.$
+2 + RegExp.$3 + &#x27;()&#x27;
+    };
+  // named function statement, possibly exported by name or as a default
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.3" id="apidoc.element.dox.contextPatternMatchers.3">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>3
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">3 = function (str) {
+  if (/^\s*(export(\s+default)?\s+)?function\s+([\w$]+)\s*\(/.exec(str)) {
+    return {
+        type: &#x27;function&#x27;
+      , name: RegExp.$3
+      , string: RegExp.$3 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.4" id="apidoc.element.dox.contextPatternMatchers.4">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>4
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">4 = function (str) {
+  // anonymous function expression exported as a default
+  if (/^\s*export\s+default\s+function\s*\(/.exec(str)) {
+    return {
+        type: &#x27;function&#x27;
+      , name: RegExp.$1 // undefined
+      , string: RegExp.$1 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.5" id="apidoc.element.dox.contextPatternMatchers.5">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>5
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">5 = function (str) {
+  // function expression
+  if (/^return\s+function(?:\s+([\w$]+))?\s*\(/.exec(str)) {
+    return {
+        type: &#x27;function&#x27;
+      , name: RegExp.$1
+      , string: RegExp.$1 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.6" id="apidoc.element.dox.contextPatternMatchers.6">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>6
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">6 = function (str) {
+  // function expression
+  if (/^\s*(?:const|let|var)\s+([\w$]+)\s*=\s*function/.exec(str)) {
+    return {
+        type: &#x27;function&#x27;
+      , name: RegExp.$1
+      , string: RegExp.$1 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.7" id="apidoc.element.dox.contextPatternMatchers.7">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>7
+        <span class="apidocSignatureSpan">(str, parentContext)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">7 = function (str, parentContext) {
+  // prototype method
+  if (/^\s*([\w$.]+)\s*\.\s*prototype\s*\.\s*([\w$]+)\s*=\s*function/.exec(str)) {
+    return {
+        type: &#x27;method&#x27;
+      , constructor: RegExp.$1
+      , cons: RegExp.$1
+      , name: RegExp.$2
+      , string: RegExp.$1 + &#x27;.prototype.&#x27; + RegExp.$2 + &#x27;()&#x27;
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.8" id="apidoc.element.dox.contextPatternMatchers.8">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>8
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">8 = function (str) {
+  // prototype property
+  if (/^\s*([\w$.]+)\s*\.\s*prototype\s*\.\s*([\w$]+)\s*=\s*([^\n;]+)/.exec(str)) {
+    return {
+        type: &#x27;property&#x27;
+      , constructor: RegExp.$1
+      , cons: RegExp.$1
+      , name: RegExp.$2
+      , value: RegExp.$3.trim()
+      , string: RegExp.$1 + &#x27;.prototype.&#x27; + RegExp.$2
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dox.contextPatternMatchers.9" id="apidoc.element.dox.contextPatternMatchers.9">
+        function <span class="apidocSignatureSpan">dox.contextPatternMatchers.</span>9
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">9 = function (str) {
+  // prototype property without assignment
+  if (/^\s*([\w$]+)\s*\.\s*prototype\s*\.\s*([\w$]+)\s*/.exec(str)) {
+    return {
+        type: &#x27;property&#x27;
+      , constructor: RegExp.$1
+      , cons: RegExp.$1
+      , name: RegExp.$2
+      , string: RegExp.$1 + &#x27;.prototype.&#x27; + RegExp.$2
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dox.utils" id="apidoc.module.dox.utils">module dox.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dox.utils.escape" id="apidoc.element.dox.utils.escape">
+        function <span class="apidocSignatureSpan">dox.utils.</span>escape
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">escape = function (html){
+  return String(html)
+    .replace(/&#x26;(?!\w+;)/g, &#x27;&#x26;amp;&#x27;)
+    .replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;)
+    .replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+utils.js:
+
+```js
+/**
+* Escape the given `html`.
+*
+* @example
+*     utils.<span class="apidocCodeKeywordSpan">escape</span>(&#x27;&#x3c;script&#x3e;&#x3c;/script&#x3e;&#x27;)
+*     // =&#x3e; &#x27;&#x26;lt;script&#x26;gt;&#x26;lt;/script&#x26;gt;&#x27;
+*
+* @param {String} html string to be escaped
+* @return {String} escaped html
+* @api public
+*/
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
